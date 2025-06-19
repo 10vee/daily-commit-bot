@@ -14,7 +14,7 @@ jobs:
 
       - - name: Make daily commit 24f2005847@ds.study.iitm.ac.in
   run: |
-    echo "Workflow run at $(date -u) :: $GITHUB_RUN_ID" > heartbeat.txt
+    echo "heartbeat: $(date -u +"%Y-%m-%dT%H:%M:%SZ") | run_id: $GITHUB_RUN_ID | workflow: $GITHUB_WORKFLOW" > heartbeat.txt
     git config --global user.name "github-actions[bot]"
     git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
     git add heartbeat.txt
