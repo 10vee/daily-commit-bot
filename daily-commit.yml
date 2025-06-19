@@ -12,11 +12,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Make daily commit 24f2005847@ds.study.iitm.ac.in
-        run: |
-          echo "$(date -u)" >> daily-log.txt
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add daily-log.txt
-          git commit -m "Daily commit at $(date -u)" || echo "No changes to commit"
-          git push origin main
+      - - name: Make daily commit 24f2005847@ds.study.iitm.ac.in
+  run: |
+    echo "Workflow run at $(date -u) :: $GITHUB_RUN_ID" > heartbeat.txt
+    git config --global user.name "github-actions[bot]"
+    git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+    git add heartbeat.txt
+    git commit -m "Daily heartbeat at $(date -u)"
+    git push origin main
